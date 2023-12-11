@@ -2,6 +2,10 @@
 
 # Project Setup
 
+Refer to the [RAVN Mobile CI/CD](https://github.com/ravnhq/mobile-cicd) on how to configure the pipeline for your
+project before using this action.
+
+_Planned: Allow run in "standalone" mode without needing to set up fastlane files in project manually._
 
 # Android SDKs
 
