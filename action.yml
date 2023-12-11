@@ -1,7 +1,7 @@
 name: 'RAVN Fastlane for Android'
 branding:
   icon: check-circle
-  color: white
+  color: black
 description: 'Execute fastlane pipeline for Android'
 inputs:
   build-lane:
