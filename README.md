@@ -31,8 +31,24 @@ jobs:
     steps:
       - name: Build and publish
         uses: ravnhq/fastlane-android-action@v1
-
+        with:
+          build-lane: release
+          java-version: 17 
+          enforced-branch: main 
+          run-id-as-build: true 
+          commit-increment: false 
+          publish-build: true
+          package-name: com.domain.application
+          google-json-key-base64: ${{ secrets.GOOGLE_JSON_KEY }}
+          artifact: aab
+          skip-signing: false
+          key-store-base64: ${{ secrets.KEY_STORE }}
+          key-store-password: ${{ secrets.KEY_STORE_PASSWORD }}
+          key-alias: ${{ secrets.KEY_ALIAS }}
+          key-password: ${{ secrets.KEY_PASSWORD }} 
 ```
+
+Refer to the following section for a complete list of inputs. 
 
 # Inputs
 
