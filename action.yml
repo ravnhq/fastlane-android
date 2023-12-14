@@ -80,15 +80,19 @@ runs:
     - id: create-google-json-file
       if: ${{ inputs.google-json-key-base64 != '' }}
       shell: bash
+      env:
+        TMPDIR: ${{ runner.temp }}
       run: |
-        echo "${{ inputs.google-json-key-base64 }}" | base64 -d > __google_credentials.json
-        echo "google-credentials-file=$(pwd)/__google_credentials.json" >> $GITHUB_OUTPUT
+        echo "${{ inputs.google-json-key-base64 }}" | base64 -d > "${TMPDIR}/__google_credentials.json"
+        echo "google-credentials-file=${TMPDIR}/__google_credentials.json" >> $GITHUB_OUTPUT
     - id: create-keystore-file
       if: ${{ inputs.key-store-base64 != '' }}
       shell: bash
+      env:
+        TMPDIR: ${{ runner.temp }}
       run: |
-        echo "${{ inputs.key-store-base64 }}" | base64 -d > __keystore.jks 
-        echo "keystore-file=$(pwd)/__keystore.jks" >> $GITHUB_OUTPUT
+        echo "${{ inputs.key-store-base64 }}" | base64 -d > "${TMPDIR}/__keystore.jks"
+        echo "keystore-file=${TMPDIR}/__keystore.jks" >> $GITHUB_OUTPUT
     - id: run-fastlane
       shell: bash
       run: ${{ github.action_path }}/fastlane.sh
