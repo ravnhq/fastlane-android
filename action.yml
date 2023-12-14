@@ -99,6 +99,7 @@ runs:
       env:
         BUILD_LANE: ${{ inputs.build-lane }}
         RUN_NUMBER: ${{ github.run_number }}
+        BUILD_NUMBER_STRATEGY: ${{ inputs.build-number }}
         FL_ENFORCED_BRANCH: ${{ inputs.enforced-branch }}
         FL_COMMIT_INCREMENT: ${{ inputs.commit-increment }}
         FL_PUBLISH_BUILD: ${{ inputs.publish-build }}
