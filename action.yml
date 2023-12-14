@@ -1,6 +1,7 @@
 name: 'RAVN Fastlane Action for Android'
 branding:
   icon: check-circle
+  # noinspection YAMLSchemaValidation
   color: black
 description: 'Execute fastlane pipeline for Android'
 inputs:
@@ -26,6 +27,10 @@ inputs:
     description: 'Whether or not to publish build artifacts to the Play Store'
     required: false
     default: 'true'
+  upload-artifacts:
+    description: 'Whether or not to upload output artifacts to GitHub Actions'
+    required: false
+    default: 'false'
   package-name:
     description: 'Android app package name (e.g. com.example.application)'
     required: true
@@ -101,3 +106,9 @@ runs:
         FL_ANDROID_STORE_PASSWORD: ${{ inputs.key-store-password }}
         FL_ANDROID_KEY_ALIAS: ${{ inputs.key-alias }}
         FL_ANDROID_KEY_PASSWORD: ${{ inputs.key-password }}
+    - id: upload-artifacts
+      if: ${{ inputs.upload-artifacts == 'true' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: artifacts/

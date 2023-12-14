@@ -33,10 +33,10 @@ jobs:
         uses: ravnhq/fastlane-android-action@v1
         with:
           build-lane: release
-          java-version: 17 
-          enforced-branch: main 
-          run-id-as-build: true 
-          commit-increment: false 
+          java-version: 17
+          enforced-branch: main
+          run-id-as-build: true
+          commit-increment: false
           publish-build: true
           package-name: com.domain.application
           google-json-key-base64: ${{ secrets.GOOGLE_JSON_KEY }}
@@ -48,7 +48,7 @@ jobs:
           key-password: ${{ secrets.KEY_PASSWORD }} 
 ```
 
-Refer to the following section for a complete list of inputs. 
+Refer to the following section for a complete list of inputs.
 
 # Inputs
 
@@ -79,6 +79,7 @@ cat path/to/your/file.json | base64 | pbcopy
 | `run-id-as-build`        | Whether or not to use GitHub build id as build number                                                |          | `true`    |
 | `commit-increment`       | Whether or not to commit and push version increment                                                  |          | `false`   |
 | `publish-build`          | Whether or not to publish build artifacts to the Play Store                                          |          | `true`    |
+| `upload-artifacts`       | Whether or not to upload output artifacts to GitHub Actions                                          |          | `true`    |
 | `package-name`           | Android app package name (e.g. com.example.application)                                              |    ✓     |           |
 | `google-json-key-base64` | Google Credentials JSON contents in base64 to upload artifacts (required if publishing is enabled)   |    *     |           |
 | `artifact`               | The type of the artifact that should be produced (values: apk, aab)                                  |          | `aab`     |
