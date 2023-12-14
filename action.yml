@@ -110,7 +110,7 @@ runs:
         FL_ANDROID_KEY_PASSWORD: ${{ inputs.key-password }}
     - id: upload-artifacts
       if: ${{ inputs.upload-artifacts == 'true' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: artifacts
         path: artifacts/
