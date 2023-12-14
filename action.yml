@@ -97,6 +97,7 @@ runs:
         RUN_NUMBER: ${{ github.run_number }}
         FL_ENFORCED_BRANCH: ${{ inputs.enforced-branch }}
         FL_COMMIT_INCREMENT: ${{ inputs.commit-increment }}
+        FL_PUBLISH_BUILD: ${{ inputs.publish-build }}
         FL_PACKAGE_NAME: ${{ inputs.package-name }}
         FL_GOOGLE_JSON_FILE: ${{ steps.create-google-json-file.outputs.google-credentials-file }}
         FL_ANDROID_ARTIFACT: ${{ inputs.artifact }}
