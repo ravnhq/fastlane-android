@@ -15,10 +15,12 @@ inputs:
   enforced-branch:
     description: 'Branch to enforce, recommended (supports regex)'
     required: false
-  run-id-as-build:
-    description: 'Whether or not to use GitHub build id as build number'
+  build-number:
+    description: |
+      Which build number strategy to use: `store` to increment previous published build, `github` to use run number
+      as build number (default), or empty to use local auto-increment.
     required: false
-    default: 'true'
+    default: 'github'
   commit-increment:
     description: 'Whether or not to commit and push version increment'
     required: false
@@ -92,8 +94,7 @@ runs:
       run: ${{ github.action_path }}/fastlane.sh
       env:
         BUILD_LANE: ${{ inputs.build-lane }}
-        RUN_ID_AS_BUILD: ${{ inputs.run-id-as-build }}
-        RUN_ID: ${{ github.run_id }}
+        RUN_NUMBER: ${{ github.run_number }}
         FL_ENFORCED_BRANCH: ${{ inputs.enforced-branch }}
         FL_COMMIT_INCREMENT: ${{ inputs.commit-increment }}
         FL_PACKAGE_NAME: ${{ inputs.package-name }}
